@@ -20,12 +20,12 @@ GPU: Không bắt buộc (Code sẽ tự động chạy bằng CPU nếu không 
 
 
 Apple_Disease_App/
-├── app_mobile_compare.py              
-├── requirements.txt      
-└── models/               
-    ├── resnet50_best.pth
-    ├── mobilenet_v2_best.pth
-    └── efficientnet_b0_best.pth
+                 ├── app_mobile_compare.py              
+                 ├── requirements.txt      
+                 └── models/               
+                           ├── resnet50_best.pth
+                           ├── mobilenet_v2_best.pth
+                           └── efficientnet_b0_best.pth
 
 
 3. Thiết lập Môi trường (Chọn 1 trong 2 cách)
@@ -87,13 +87,13 @@ Lỗi "File not found" hoặc "Models not found":
 
 Đảm bảo bạn đang đứng đúng thư mục chứa file app.py khi gõ lệnh.
 
-Kiểm tra xem thư mục models có nằm cùng cấp với file app.py không.
+Kiểm tra xem thư mục models có nằm cùng cấp với file  app_mobile_compare.py không.
 
 Lỗi "Command not found: streamlit":
 
 Có thể bạn chưa kích hoạt môi trường ảo. Hãy chạy lại bước kích hoạt (activate).
 
-Hoặc thử chạy: python -m streamlit run app.py.
+Hoặc thử chạy: python -m streamlit run  app_mobile_compare.py.
 
 Lỗi Camera không hoạt động trên điện thoại:
 
