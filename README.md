@@ -19,9 +19,9 @@ GPU: Không bắt buộc (Code sẽ tự động chạy bằng CPU nếu không 
 Đảm bảo bạn đã nhận đủ các file và thư mục sau, đặt chúng cùng một nơi:
 
 Apple_Disease_App/
-├── app_mobile_compare.py                # File mã nguồn chính của ứng dụng
-├── requirements.txt      # Danh sách thư viện cần thiết
-└── models/               # Thư mục chứa các file mô hình (.pth)
+├── app_mobile_compare.py              
+├── requirements.txt      
+└── models/               
     ├── resnet50_best.pth
     ├── mobilenet_v2_best.pth
     └── efficientnet_b0_best.pth
