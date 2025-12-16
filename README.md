@@ -18,6 +18,7 @@ GPU: Không bắt buộc (Code sẽ tự động chạy bằng CPU nếu không 
 
 Đảm bảo bạn đã nhận đủ các file và thư mục sau, đặt chúng cùng một nơi:
 
+
 Apple_Disease_App/
 ├── app_mobile_compare.py              
 ├── requirements.txt      
