@@ -48,10 +48,6 @@ st.markdown("""
             background-image: linear-gradient(90deg, #00b09b, #96c93d);
         }
         
-        /* Ẩn menu mặc định và Sidebar */
-        #MainMenu {visibility: hidden;}
-        footer {visibility: hidden;}
-        [data-testid="stSidebar"] {display: none;}
         
         /* Căn chỉnh header */
         .main-header {
@@ -61,11 +57,9 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- 2. CẤU HÌNH HỆ THỐNG ---
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 CLASSES = ['Apple Scab', 'Black Rot', 'Cedar Apple Rust', 'Healthy']
 
-# Đường dẫn (Cập nhật cho máy Local)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_DIR = os.path.join(BASE_DIR, 'models') 
 
@@ -76,7 +70,6 @@ DESCRIPTIONS = {
     "Healthy": "✅ **Lá khỏe mạnh:** Màu xanh đều, không có đốm lạ hay dấu hiệu tổn thương."
 }
 
-# --- 3. HÀM TẢI ĐA MÔ HÌNH (CACHE) ---
 @st.cache_resource
 def load_all_models():
     models_dict = {}
@@ -110,14 +103,14 @@ def load_all_models():
     
     return models_dict
 
-with st.spinner("🚀 Đang khởi động hệ thống AI..."):
+with st.spinner("Đang khởi động hệ thống AI..."):
     loaded_models = load_all_models()
 
 if not loaded_models:
-    st.error("❌ Không tải được mô hình nào. Vui lòng kiểm tra file model.")
+    st.error("Không tải được mô hình nào. Vui lòng kiểm tra file model.")
     st.stop()
 
-# --- 4. XỬ LÝ ẢNH ---
+
 def process_image(image):
     transform = transforms.Compose([
         transforms.Resize([224, 224]),
@@ -126,12 +119,11 @@ def process_image(image):
     ])
     return transform(image).unsqueeze(0).to(DEVICE)
 
-# --- 5. GIAO DIỆN CHÍNH (NO SIDEBAR) ---
+
 
 # Header
 col_h1, col_h2 = st.columns([1, 8])
-with col_h1:
-    st.image("https://img.icons8.com/color/96/000000/apple-orchard.png", width=80)
+
 with col_h2:
     st.title("Bác sĩ Táo AI")
     st.caption(f"Engine: {'🟢 GPU' if torch.cuda.is_available() else '🟡 CPU'}")
@@ -284,14 +276,14 @@ elif app_mode == "⚡ So sánh Hiệu năng":
                 times.append((end - start) * 1000)
             
             avg_time = sum(times) / len(times)
-            param_size = sum(p.numel() for p in model.parameters()) * 4 / (1024**2)
+          # param_size = sum(p.numel() for p in model.parameters()) * 4 / (1024**2)
             
             results.append({
                 "Mô hình": name,
                 "Dự đoán": CLASSES[p_idx],
                 "Độ tin cậy": f"{c.item()*100:.1f}%",
                 "Tốc độ (ms)": avg_time,
-                "Kích thước (MB)": param_size
+           #   "Kích thước (MB)": param_size
             })
             progress_bar.progress((i + 1) / total_models)
         
